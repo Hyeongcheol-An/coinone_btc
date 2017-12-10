@@ -4,6 +4,7 @@ import codecs
 import threading
 from urllib.request import Request, urlopen
 from time import sleep
+import datetime
 
 
 def coinone():
@@ -16,8 +17,8 @@ def coinone():
 	for h in jsonTicker['completeOrders']:
 		FindBTC = h['price']
 	BTC = int(FindBTC)
-	#print(TIME)
-	print(BTC, "원")
+	s = datetime.datetime.now()
+	print(s, "BTC", BTC, "원")
 	threading.Timer(1, coinone).start()
 	urlTicker = urllib.request.urlopen('https://api.coinone.co.kr/orderbook')
 
